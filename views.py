@@ -58,3 +58,18 @@ def dologin(request):
 def dashboard(request):
     return render(request,'dashboard/home.html')
 
+# Na views, vamos criar as funções relativas as rotas criadas anteriormente:
+
+# Logout do sistema
+def logouts(request):
+    logout(request)
+    return redirect('/painel/')
+
+# Alterar a senha
+def changePassword(request):
+    user = User.objects.get(email=request.user.email)
+    user.set_password('123456')
+    user.save()
+    logout(request)
+    return redirect('/painel/')
+
