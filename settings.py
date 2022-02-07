@@ -32,3 +32,10 @@ DATABASES = {
         }
     }
 }
+
+# Para que o diretório static funcione corretamente precisamos configurá-lo 
+# no arquivo de configurações adicionando a seguinte linha:
+
+STATICFILES_DIR = ('/static/')
+
+
