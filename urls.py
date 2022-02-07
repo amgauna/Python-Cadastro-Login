@@ -17,3 +17,9 @@ urlpatterns = [
 path('create/', create),
 path('store/', store),
 
+# Vamos criar a rota de login (template), rota de processamento dos 
+# dados de login e a página após o login (dashboard):
+
+path('painel/', painel),
+path('dologin/', dologin),
+path('dashboard/', dashboard),
