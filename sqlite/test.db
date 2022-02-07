@@ -1,0 +1,9 @@
+try:
+    cur=db.cursor()
+    cur.execute("Query")
+    db.commit()
+    print ("success message")
+except:
+    print ("error")
+    db.rollback()
+db.close()
