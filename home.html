@@ -13,3 +13,17 @@
 
 <a href="/painel/">Painel de Login</a><br>
 
+<!-- Vamos criar o diretório dashboard dentro de templates, e vamos criar 
+     o arquivo home.html que será a página inicial da área restrita:  -->
+
+{% extends 'main.html' %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        Área Restrita
+        Bem vindo
+    {% else %}
+        Você não tem acesso a essa área!
+    {% endif %}
+{% endblock %}
+
