@@ -30,3 +30,28 @@ def store(request):
         data['class'] = 'alert-success'
     return render(request,'create.html',data)
 
+# Na views vamos criar as funções relativas as rotas recém criadas. 
+# Essas rotas serão responsáveis pela autenticação e redirecionamento do usuário:
+#Formulário do painel de login
+
+def painel(request):
+    return render(request,'painel.html')
+
+#Processa o login
+
+def dologin(request):
+    data = {}
+    user = authenticate(username=request.POST['user'], password=request.POST['password'])
+    if user is not None:
+        login(request, user)
+        return redirect('/dashboard/')
+    else:
+        data['msg'] = 'Usuário ou Senha inválidos!'
+        data['class'] = 'alert-danger'
+        return render(request,'painel.html',data)
+
+#Página inicial do dashboard
+
+def dashboard(request):
+    return render(request,'dashboard/home.html')
+
