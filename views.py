@@ -73,3 +73,24 @@ def changePassword(request):
     logout(request)
     return redirect('/painel/')
 
+# Permissões e Níveis de Acesso no DJANGO
+# O ideal é inserir a permissão do usuário assim que ele for cadastrado no sistema. 
+# O Django disponibiliza o método para fazer isso:
+
+#Inserção dos dados dos usuários no banco
+
+def store(request):
+    data = {}
+    if(request.POST['password'] != request.POST['password-conf']):
+        data['msg'] = 'Senha e confirmação de senha diferentes!'
+        data['class'] = 'alert-danger'
+    else:
+        user = User.objects.create_user(request.POST['user'], request.POST['email'], request.POST['password'])
+        user.first_name = request.POST['name']
+        user.save()
+        user.user_permissions.add(27)
+        data['msg'] = 'Usuário cadastrado com sucesso!'
+        data['class'] = 'alert-success'
+    return render(request,'create.html',data)
+
+
