@@ -11,6 +11,9 @@ def home(request):
 # Vamos inserir as funções relativas as rotas acima no arquivo views:
 # Formulário de cadastro de usuários
 
+from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
+
 def create(request):
     return render(request,'create.html')
 
