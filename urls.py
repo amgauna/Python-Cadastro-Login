@@ -23,3 +23,9 @@ path('store/', store),
 path('painel/', painel),
 path('dologin/', dologin),
 path('dashboard/', dashboard),
+
+# Troca de Senha e Logout com Django
+# Vamos começar criando as rotas do logout e troca de senha:
+
+path('logouts/', logouts),
+path('password/', changePassword),
